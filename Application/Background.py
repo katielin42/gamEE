@@ -10,6 +10,12 @@ class Background( GameObject ):
 
     def load(self, gameState):
         if gameState == 0:
-            Background.img = Image.Open("../Resources/temp_backdrop0.jpg")
+            pilimg = Image.open("../Resources/temp_backdrop0.jpg")
+            mode = pilimg.mode
+            size = pilimg.size
+            data = pilimg.tobytes()
+
+            Background.img = pg.image.fromstring(data, size, mode)
             window.screen.blit(Background.img, (0, 0))
+
 background = Background()
