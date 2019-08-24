@@ -14,6 +14,8 @@ from Application.Window import window
 from Application.Clock import clock
 from Application.Player import Player
 from Application.GameState import gameState
+from Application.Background import background
+
 
 # load in an object(x location, y location). ALl objects go here
 player = Player(30, 30)
@@ -60,7 +62,7 @@ if __name__ == "__main__":
                 obj.updatePosition()
 
         #if game state of >= 0 has been achieved
-        elif gameState != 0:
+        elif gameState.get() != 0:
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
