@@ -12,7 +12,6 @@ pg.init()
 from Application.Colour import colour
 from Application.GameObject import GameObject
 from Application.Window import window
-from Application.Window import startWindow
 from Application.Clock import clock
 from Application.Player import Player
 
@@ -37,14 +36,10 @@ if __name__ == "__main__":
 
             #initialise backdrop
             bg = pg.image.load('/Users/kate/Documents/Engineerin/gamEE/Resources/temp_backdrop0.jpg')
-            startWindow.screen.blit(bg, (0, 0))
+            window.screen.blit(bg, (0, 0))
             #display title screen menu
-            text = startWindow.font.render(
-                '                                                          Press Space to Start               Press Backspace to Quit',
-                True, (200, 200, 200))
-            textRect = text.get_rect()
-            textRect.center = (startWindow.width // 2, startWindow.height // 2)
-            startWindow.screen.blit(text, textRect)
+            text = window.font.render('Press Space to Start and Backspace to Quit', True, (200, 200, 200))
+            window.screen.blit(text, [200,200])
 
             # loops through each event and constantly checks if the game is still running
             for event in pg.event.get():
@@ -70,10 +65,10 @@ if __name__ == "__main__":
         #if game state of >= 0 has been achieved
         elif gameState == 1:
             # display press p to pause
-            pause = startWindow.font.render('Press P to Pause',True, (200, 200, 200))
-            pauseRect = text.get_rect()
-            pauseRect.center = (startWindow.width // 2, startWindow.height // 2)
-            startWindow.screen.blit(pause, (0,0))
+            # pause = startWindow.font.render('Press P to Pause',True, (200, 200, 200))
+            # pauseRect = text.get_rect()
+            # pauseRect.center = (startWindow.width // 2, startWindow.height // 2)
+            # startWindow.screen.blit(pause, (0,0))
             # sprite.pause (pause is a function that will be implemented later)
 
             for event in pg.event.get():

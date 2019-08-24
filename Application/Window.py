@@ -4,8 +4,8 @@ from Application.Colour import colour
 class Window():
     IsInit = False
 
-    width = 480
-    height = 360
+    width = 853
+    height = 480
     screen = []
 
     def __init__(self):
@@ -23,6 +23,9 @@ class Window():
         #flip buffer
         pg.display.flip()
 
+        self.font = pg.font.SysFont('Comic Sans MS', 32)
+        pg.display.set_caption("Our Game")
+
     @staticmethod
     def clear():
         Window.screen.fill(colour.black)
@@ -30,21 +33,17 @@ class Window():
 #Window object
 window = Window()
 
-
-# start Screen configurations
-class StartWindow():
-    IsInit = False
-    width = 720
-    height = 1280
-
-
-    def __init__(self):
-        if StartWindow.IsInit:
-            print("Dumbass")
-            return
-        StartWindow.IsInit = True
-        self.font = pg.font.SysFont('Comic Sans MS', 32)
-        self.screen = pg.display.set_mode((StartWindow.height, StartWindow.width))
-        pg.display.set_caption("Our Game")
-#start window
-startWindow = StartWindow()
+#
+# # start Screen configurations
+# class StartWindow():
+#     IsInit = False
+#
+#     def __init__(self):
+#         if StartWindow.IsInit:
+#             print("Dumbass")
+#             return
+#         StartWindow.IsInit = True
+#
+#
+# #start window
+# startWindow = StartWindow()
