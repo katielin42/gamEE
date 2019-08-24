@@ -6,7 +6,6 @@ gameState = 0
 IsRunning = True
 
 from Application.Colour import colour
-from Application.Map import
 from Application.GameObject import GameObject
 from Application.Window import window
 from Application.Clock import clock

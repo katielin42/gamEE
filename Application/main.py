@@ -10,6 +10,7 @@ pg.init()
 from Application.Colour import colour
 from Application.GameObject import GameObject
 from Application.Window import window
+from Application.Window import startWindow
 from Application.Clock import clock
 from Application.Player import Player
 
@@ -20,24 +21,6 @@ player = Player(30, 30)
 player2 = Player(100, 100)
 
 ObjectList = [player, player2]
-
-# start Screen configurations
-class StartWindow():
-    IsInit = False
-    width = 720
-    height = 1280
-
-
-    def __init__(self):
-        if StartWindow.IsInit:
-            print("Dumbass")
-            return
-        StartWindow.IsInit = True
-        self.font = pg.font.SysFont('Comic Sans MS', 32)
-        self.screen = pg.display.set_mode((StartWindow.height, StartWindow.width))
-        pg.display.set_caption("Our Game")
-
-startWindow = StartWindow()
 
 
 # set the center of the rectangular object.
@@ -61,7 +44,7 @@ if __name__ == "__main__":
             textRect.center = (startWindow.width // 2, startWindow.height // 2)
             startWindow.screen.blit(text, textRect)
 
-            # loops through each event and constntly checks if the game is still running
+            # loops through each event and constantly checks if the game is still running
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     isRunning = False
@@ -83,7 +66,14 @@ if __name__ == "__main__":
                 obj.updatePosition()
 
         #if game state of >= 0 has been achieved
-        elif gameState != 0:
+        elif gameState == 1:
+            # display press p to pause
+            pause = startWindow.font.render('Press P to Pause',True, (200, 200, 200))
+            pauseRect = text.get_rect()
+            pauseRect.center = (startWindow.width // 2, startWindow.height // 2)
+            startWindow.screen.blit(pause, (0,0))
+            # sprite.pause (pause is a function that will be implemented later)
+
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     isRunning = False
