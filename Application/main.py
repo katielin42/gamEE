@@ -3,7 +3,6 @@ import sys
 import pygame as pg
 import os
 
-gameState = 0
 isRunning = True
 
 # INITILISING #
@@ -14,8 +13,7 @@ from Application.GameObject import GameObject
 from Application.Window import window
 from Application.Clock import clock
 from Application.Player import Player
-
-GameObject.GameState = gameState
+from Application.GameState import gameState
 
 # load in an object(x location, y location). ALl objects go here
 player = Player(30, 30)
@@ -32,7 +30,7 @@ if __name__ == "__main__":
     while isRunning:
 
         #if no buttons have been pressed
-        if gameState == 0:
+        if gameState.get() == 0:
 
             #initialise backdrop
             bg = pg.image.load('../Resources/temp_backdrop0.jpg')
