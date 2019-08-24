@@ -1,4 +1,5 @@
 /[Aa]pplication/[Tt]esting/*
 .DS_Store
+venv/*
 Application/Testing/*.py
 Testing/TestFilePlsIgnore.py
