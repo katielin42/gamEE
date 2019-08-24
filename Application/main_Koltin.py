@@ -26,6 +26,7 @@ while IsRunning:
         if event.type == pygame.QUIT:
             IsRunning = False
 
+        #run the event handler for the event
         for obj in ObjectList:
             obj.EventHandler(event)
 
