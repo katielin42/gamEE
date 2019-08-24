@@ -1,19 +1,14 @@
 # Main Entry point
-import sys
 import pygame as pg
-import os
 
 #Initialize pygame
 pg.init()
 
-
-from Application.Colour import colour
-from Application.GameObject import GameObject
 from Application.Window import window
 from Application.Clock import clock
 from Application.Player import Player
 from Application.GameState import gameState
-from Application.Testing.MainMenu import MainMenu
+from Application.MainMenu import MainMenu
 
 
 # load in an object(x location, y location).
