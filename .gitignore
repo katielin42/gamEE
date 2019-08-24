@@ -8,3 +8,4 @@ Testing/TestFilePlsIgnore.py
 *.iml
 *.xml
 *.pyc
+.idea/*
