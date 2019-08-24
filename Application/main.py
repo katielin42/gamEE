@@ -35,7 +35,7 @@ if __name__ == "__main__":
         if gameState == 0:
 
             #initialise backdrop
-            bg = pg.image.load('/Users/kate/Documents/Engineerin/gamEE/Resources/temp_backdrop0.jpg')
+            bg = pg.image.load('../Resources/temp_backdrop0.jpg')
             window.screen.blit(bg, (0, 0))
             #display title screen menu
             text = window.font.render('Press Space to Start and Backspace to Quit', True, (200, 200, 200))
