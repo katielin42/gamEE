@@ -1,6 +1,8 @@
 # Main Entry point
 import sys
 import pygame as pg
+import os
+
 gameState = 0
 isRunning = True
 
