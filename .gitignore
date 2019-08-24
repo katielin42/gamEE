@@ -3,3 +3,5 @@
 venv/*
 Application/Testing/*.py
 Testing/TestFilePlsIgnore.py
+*.iml
+*.xml
