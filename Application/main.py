@@ -63,13 +63,7 @@ if __name__ == "__main__":
                 obj.updatePosition()
 
         #if game state of >= 0 has been achieved
-        elif gameState == 1:
-            # display press p to pause
-            # pause = startWindow.font.render('Press P to Pause',True, (200, 200, 200))
-            # pauseRect = text.get_rect()
-            # pauseRect.center = (startWindow.width // 2, startWindow.height // 2)
-            # startWindow.screen.blit(pause, (0,0))
-            # sprite.pause (pause is a function that will be implemented later)
+        elif gameState != 0:
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
