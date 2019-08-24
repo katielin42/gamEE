@@ -1,11 +1,11 @@
 # Main Entry point
 import sys
 import pygame as pg
+gameState = 0
 
 # INIT #
 pg.init()
 
-sstate = 0
 
 class Window():
     IsInit = False
@@ -35,14 +35,15 @@ if __name__ == "__main__":
 
     isRunning = True
     while isRunning:
-        window.screen.blit(text, textRect)
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                isRunning = False
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_SPACE:
-                    state = 1
-                if event.key == pg.K_BACKSPACE:
+        if gameState == 0:
+            window.screen.blit(text, textRect)
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
                     isRunning = False
+                if event.type == pg.KEYDOWN:
+                    if event.key == pg.K_SPACE:
+                        gameState = 1
+                    if event.key == pg.K_BACKSPACE:
+                        isRunning = False
         pg.display.flip()
 
