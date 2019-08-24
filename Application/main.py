@@ -14,6 +14,7 @@ from Application.GameObject import GameObject
 from Application.Window import window
 from Application.Clock import clock
 from Application.Player import Player
+from Application.Background import background
 
 GameObject.GameState = gameState
 
@@ -35,8 +36,7 @@ if __name__ == "__main__":
         if gameState == 0:
 
             #initialise backdrop
-            bg = pg.image.load('../Resources/temp_backdrop0.jpg')
-            window.screen.blit(bg, (0, 0))
+            background.load(gameState)
             #display title screen menu
             text = window.font.render('Press Space to Start and Backspace to Quit', True, (200, 200, 200))
             window.screen.blit(text, [200,200])
