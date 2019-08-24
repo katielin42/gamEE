@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    isRunning = False
+                    gameState.isRunning = False
 
                 for obj in ObjectList:
                     obj.EventHandler(event)
