@@ -24,7 +24,7 @@ class Window():
 
 window = Window()
 
-text = window.font.render('                                                          Press Space to Start               Press Backspace to Quit', True, (0,255,0))
+text = window.font.render('                                                          Press Space to Start               Press Backspace to Quit', True, (0,200,0))
 
 textRect = text.get_rect()
 
