@@ -3,9 +3,7 @@ import sys
 import pygame as pg
 import os
 
-isRunning = True
-
-# INITILISING #
+#Initialize pygame
 pg.init()
 
 from Application.Colour import colour
@@ -23,16 +21,14 @@ player2 = Player(100, 100)
 
 ObjectList = [player, player2]
 
-
 # set the center of the rectangular object.
-
 if __name__ == "__main__":
 
-# while the app is running
-    while isRunning:
+    #While the game is running...
+    while gameState.isRunning:
 
-        #if no buttons have been pressed
-        if gameState.get() == 0:
+        #Check if the current state is the main menu
+        if gameState.get() == gameState.stateList["Main Menu"]:
 
             #initialise backdrop
             background.load(gameState)
@@ -40,10 +36,12 @@ if __name__ == "__main__":
             text = window.font.render('Press Space to Start and Backspace to Quit', True, (200, 200, 200))
             window.screen.blit(text, [200,200])
 
-            # loops through each event and constantly checks if the game is still running
+            #Check each pygame event for the current frame
             for event in pg.event.get():
+
+                #if window is closed, exit pygame
                 if event.type == pg.QUIT:
-                    isRunning = False
+                    gameState.isRunning = False
 
                 #handles events for each object
                 for obj in ObjectList:
@@ -52,8 +50,7 @@ if __name__ == "__main__":
                 #press space to start the game, game state changed to 1. press backspace to quit the game.
                 if event.type == pg.KEYDOWN:
                     if event.key == pg.K_SPACE:
-                        gameState = 1
-                        GameObject.GameState = gameState
+                        gameState.set(1)
                     if event.key == pg.K_BACKSPACE:
                         isRunning = False
 
@@ -61,8 +58,8 @@ if __name__ == "__main__":
             for obj in ObjectList:
                 obj.updatePosition()
 
-        #if game state of >= 0 has been achieved
-        elif gameState.get() != 0:
+        #Check if we're in a state where a player has control
+        elif gameState.playerHasControl:
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -89,6 +86,7 @@ if __name__ == "__main__":
             # wait for tick
             clock.waitForTick()
 
+        #flip display buffer
         pg.display.flip()
 
 pg.quit()
