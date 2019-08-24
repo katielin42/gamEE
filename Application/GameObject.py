@@ -20,9 +20,12 @@ class GameObject():
         self.position += self.velocity
 
     #method for drawing the game object
-    @staticmethod
-    def drawObject():
-        pygame.draw.rect(window.screen, colour.blue, (30, 30, 30, 30))
+    def drawObject(self):
+        pygame.draw.rect(window.screen, colour.blue,
+                         (self.position.x, self.position.y, 30, 30))
+
+    def EventHandler(self, event):
+        pass
 
 
 
