@@ -1,4 +1,4 @@
-import pygame
+import pygame as pg
 from Application.Colour import colour
 
 class Window():
@@ -15,13 +15,13 @@ class Window():
         Window.IsInit = True
 
         #setup screen
-        Window.screen = pygame.display.set_mode((Window.width, Window.height))
+        Window.screen = pg.display.set_mode((Window.width, Window.height))
 
         #clear background
         Window.clear()
 
         #flip buffer
-        pygame.display.flip()
+        pg.display.flip()
 
     @staticmethod
     def clear():
@@ -29,3 +29,22 @@ class Window():
 
 #Window object
 window = Window()
+
+
+# start Screen configurations
+class StartWindow():
+    IsInit = False
+    width = 720
+    height = 1280
+
+
+    def __init__(self):
+        if StartWindow.IsInit:
+            print("Dumbass")
+            return
+        StartWindow.IsInit = True
+        self.font = pg.font.SysFont('Comic Sans MS', 32)
+        self.screen = pg.display.set_mode((StartWindow.height, StartWindow.width))
+        pg.display.set_caption("Our Game")
+#start window
+startWindow = StartWindow()
