@@ -25,9 +25,9 @@ class Background( GameObject ):
         self.imageLoaded = False
         pass
 
-    def drawObject(self):
+    def drawObject(self, context = None):
         #Startup state
-        if gameState.get() == gameState.stateList["Main Menu"]:
+        if gameState.get() == gameState.stateDict["Main Menu"]:
             #load in background image
             if Background.imgDict["Main Menu"] is None:
                 self.convertPIL2Pygame(Background.imgLocDict["Main Menu"])

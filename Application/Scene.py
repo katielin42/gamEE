@@ -2,6 +2,7 @@ import pygame
 
 class Scene():
     def __init__(self):
+        #fill out the object list with objects in the scene
         self.objectList = []
 
     def drawScene(self):

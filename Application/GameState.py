@@ -33,7 +33,7 @@ class GameState():
     isRunning = True
 
     def __init__(self):
-        GameState.currentState = GameState.stateList["Main Menu"]
+        GameState.currentState = GameState.stateDict["Main Menu"]
         playerHasControl = False
 
     #Get current state
@@ -42,7 +42,7 @@ class GameState():
 
     #Get current state as a dictionary lookup (string type)
     def getDict(self):
-        return GameState.stateList[GameState.currentState]
+        return GameState.stateListArr[GameState.currentState]
 
     #Set the current state
     def set(self, value = 0):
