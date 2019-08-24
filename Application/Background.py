@@ -8,23 +8,37 @@ from Application.Window import window
 from Application.GameState import gameState
 
 class Background( GameObject ):
-    img = None
+    #Imagines stored as pygame strings
+    imgDict = {
+        "Main Menu": None,
+        "Level 1 OverWorld": None,
+        "Level 1 UnderWorld": None,
+        "Death Screen": None,
+        "Win Screen": None
+    }
+
+    imgLocDict = {
+        "Main Menu": "../Resources/temp_backdrop0.jpg"
+    }
+
     def __init__(self):
+        self.imageLoaded = False
         pass
 
-    def load(self):
+    def drawObject(self):
         #Startup state
-        if gameState.get() == 0:
+        if gameState.get() == gameState.stateList["Main Menu"]:
             #load in background image
-            self.convertPIL2Pygame("../Resources/temp_backdrop0.jpg")
-            window.screen.blit(Background.img, (0, 0))
+            if Background.imgDict["Main Menu"] is None:
+                self.convertPIL2Pygame(Background.imgLocDict["Main Menu"])
+            window.screen.blit(Background.imgDict["Main Menu"], (0, 0))
 
     def convertPIL2Pygame(self, location):
-        # load in back image
+        # load in background image
         PIL_img = Image.open(location)
         mode = PIL_img.mode
         size = PIL_img.size
         PIL_img_asBytes = PIL_img.tobytes()
-        Background.img = pg.image.fromstring(PIL_img_asBytes, size, mode)
 
-background = Background()
+        #based on current state store the pygame surface image
+        Background.imgDict[gameState.getDict()] = pg.image.fromstring(PIL_img_asBytes, size, mode)

@@ -6,20 +6,24 @@ import os
 #Initialize pygame
 pg.init()
 
+
 from Application.Colour import colour
 from Application.GameObject import GameObject
 from Application.Window import window
 from Application.Clock import clock
 from Application.Player import Player
 from Application.GameState import gameState
-from Application.Background import background
+from Application.Testing.MainMenu import MainMenu
 
 
-# load in an object(x location, y location). ALl objects go here
+# load in an object(x location, y location).
 player = Player(30, 30)
 player2 = Player(100, 100)
 
 ObjectList = [player, player2]
+
+#Scene objects (not initialized)
+mainMenu = None
 
 # set the center of the rectangular object.
 if __name__ == "__main__":
@@ -27,39 +31,29 @@ if __name__ == "__main__":
     #While the game is running...
     while gameState.isRunning:
 
+        #Get the current state
+        currentState = gameState.get()
+
         #Check if the current state is the main menu
-        if gameState.get() == gameState.stateList["Main Menu"]:
+        if currentState == gameState.stateDict["Main Menu"]:
 
-            #initialise backdrop
-            background.load(gameState)
+            #if mainMenu has not been initialized
+            if mainMenu is None:
+                mainMenu = MainMenu()
+
+            #Handle events in the main menu
+            mainMenu.handleEvents()
+
             #display title screen menu
-            text = window.font.render('Press Space to Start and Backspace to Quit', True, (200, 200, 200))
-            window.screen.blit(text, [200,200])
+            mainMenu.drawScene()
 
-            #Check each pygame event for the current frame
-            for event in pg.event.get():
-
-                #if window is closed, exit pygame
-                if event.type == pg.QUIT:
-                    gameState.isRunning = False
-
-                #handles events for each object
-                for obj in ObjectList:
-                    obj.EventHandler(event)
-
-                #press space to start the game, game state changed to 1. press backspace to quit the game.
-                if event.type == pg.KEYDOWN:
-                    if event.key == pg.K_SPACE:
-                        gameState.set(1)
-                    if event.key == pg.K_BACKSPACE:
-                        isRunning = False
-
-            #updates position of object constantly
-            for obj in ObjectList:
-                obj.updatePosition()
+            #if game state has transitioned delete the main menu object
+            if gameState.currentState != gameState.stateDict["Main Menu"]:
+                del mainMenu
+                mainMenu = None
 
         #Check if we're in a state where a player has control
-        elif gameState.playerHasControl:
+        elif currentState == gameState.stateDict["Level 1 OverWorld"]:
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
