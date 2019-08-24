@@ -1,5 +1,7 @@
 import pygame
 
+gameState = 0
+
 #flag to indicate if running
 IsRunning = True
 
@@ -9,6 +11,7 @@ from Application.Window import window
 from Application.Clock import clock
 from Application.Player import Player
 
+GameObject.GameState = gameState
 #load in an object
 player = Player(30, 30)
 player2 = Player(100, 100)

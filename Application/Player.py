@@ -1,6 +1,8 @@
 import pygame
 
+from Application.Colour import colour
 from Application.GameObject import GameObject
+from Application.Window import window
 
 class Player( GameObject ):
 
@@ -12,29 +14,33 @@ class Player( GameObject ):
         self.position.y = position_y
 
     def EventHandler(self, event):
-
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a:
-                self.velocity.x = -3
-            if event.key == pygame.K_d:
-                self.velocity.x = 3
-            if event.key == pygame.K_w:
-                self.velocity.y = -3
-            if event.key == pygame.K_s:
-                self.velocity.y = 3
-            if event.key == pygame.K_SPACE:
+        if GameObject.GameState > 0:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_a:
+                    self.velocity.x = -3
+                if event.key == pygame.K_d:
+                    self.velocity.x = 3
+                if event.key == pygame.K_w:
+                    self.velocity.y = -3
+                if event.key == pygame.K_s:
+                    self.velocity.y = 3
+                if event.key == pygame.K_SPACE:
+                    pass
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_a:
+                    self.velocity.x = 0
+                if event.key == pygame.K_d:
+                    self.velocity.x = 0
+                if event.key == pygame.K_w:
+                    self.velocity.y = 0
+                if event.key == pygame.K_s:
+                    self.velocity.y = 0
+                if event.key == pygame.K_SPACE:
+                    pass
+            else:
                 pass
-        elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_a:
-                self.velocity.x = 0
-            if event.key == pygame.K_d:
-                self.velocity.x = 0
-            if event.key == pygame.K_w:
-                self.velocity.y = 0
-            if event.key == pygame.K_s:
-                self.velocity.y = 0
-            if event.key == pygame.K_SPACE:
-                pass
-        else:
-            pass
 
+    def drawObject(self):
+        if GameObject.GameState > 0:
+            pygame.draw.rect(window.screen, colour.blue,
+                             (self.position.x, self.position.y, 30, 30))

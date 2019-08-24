@@ -4,6 +4,7 @@ from Application.Window import window
 from Application.Colour import colour
 
 class GameObject():
+    GameState = 0
     def __init__(self):
         #initialize position
         self.position = pygame.Vector2()
