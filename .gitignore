@@ -1,4 +1,4 @@
 /[Aa]pplication/[Tt]esting/*
 .DS_Store
 Application/Testing/*.py
-Application/Testing/TestFilePlsIgnore.py
+Testing/TestFilePlsIgnore.py
