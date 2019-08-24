@@ -23,6 +23,9 @@ class Window():
         #flip buffer
         pg.display.flip()
 
+        #init font
+        pg.font.init()
+
         self.font = pg.font.SysFont('Comic Sans MS', 32)
         pg.display.set_caption("Our Game")
 

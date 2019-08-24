@@ -42,3 +42,7 @@ class Background( GameObject ):
 
         #based on current state store the pygame surface image
         Background.imgDict[gameState.getDict()] = pg.image.fromstring(PIL_img_asBytes, size, mode)
+        #resize back to size of window
+        Background.imgDict[gameState.getDict()] = \
+            pg.transform.scale(Background.imgDict[gameState.getDict()], \
+            (window.width, window.height))
