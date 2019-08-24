@@ -3,6 +3,7 @@ import pygame
 from Application.Colour import colour
 from Application.GameObject import GameObject
 from Application.Window import window
+from Application.GameState import gameState
 
 class Player( GameObject ):
 
@@ -14,7 +15,7 @@ class Player( GameObject ):
         self.position.y = position_y
 
     def EventHandler(self, event):
-        if GameObject.GameState > 0:
+        if gameState.get() > 0:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
                     self.velocity.x = -3
@@ -41,6 +42,6 @@ class Player( GameObject ):
                 pass
 
     def drawObject(self):
-        if GameObject.GameState > 0:
+        if gameState.get() > 0:
             pygame.draw.rect(window.screen, colour.blue,
                              (self.position.x, self.position.y, 30, 30))

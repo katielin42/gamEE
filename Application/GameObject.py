@@ -2,9 +2,9 @@ import pygame
 
 from Application.Window import window
 from Application.Colour import colour
+from Application.GameState import gameState
 
 class GameObject():
-    GameState = 0
     def __init__(self):
         #initialize position
         self.position = pygame.Vector2()
