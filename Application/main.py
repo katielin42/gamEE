@@ -2,10 +2,10 @@
 import sys
 import pygame as pg
 
-
 # INIT #
 pg.init()
 
+sstate = 0
 
 class Window():
     IsInit = False
@@ -24,7 +24,7 @@ class Window():
 
 window = Window()
 
-text = window.font.render('Press Space to Start', True, (0,255,0))
+text = window.font.render('                                                          Press Space to Start               Press Backspace to Quit', True, (0,255,0))
 
 textRect = text.get_rect()
 
@@ -41,5 +41,8 @@ if __name__ == "__main__":
                 isRunning = False
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_SPACE:
-                    print("Hey, you pressed the key, SPACE!")
+                    state = 1
+                if event.key == pg.K_BACKSPACE:
+                    isRunning = False
         pg.display.flip()
+
