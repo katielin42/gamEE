@@ -12,15 +12,19 @@ class TextObject( GameObject ):
         "Main Menu": None
     }
 
-    def __init__(self):
+    def __init__(self, context = None):
         GameObject.__init__(self)
+
+        self.context = context
 
     def drawObject(self, context = None):
 
         if gameState.get() == gameState.stateDict["Main Menu"]:
 
+            #check if text has been rendered.
             if TextObject.renderedTextDict["Main Menu"] is None:
                 TextObject.renderedTextDict["Main Menu"] = \
                     window.font.render('Press Space to Start and Backspace to Quit', True, colour.white)
+
             window.screen.blit(TextObject.renderedTextDict["Main Menu"], [200, 200])
 
