@@ -7,6 +7,7 @@ from Application.GameState import gameState
 from Application.Scene import Scene
 from Application.TextObject import TextObject
 from Application.Window import window
+from Application.ImageObject import ImageObject
 
 class MainMenu( Scene ):
 
@@ -20,6 +21,9 @@ class MainMenu( Scene ):
 
         #Initialize text objects
         self.objectList.append( TextObject() )
+
+        #Initialize text objects
+        self.objectList.append( ImageObject() )
 
     def drawScene(self):
         #render appended objects
