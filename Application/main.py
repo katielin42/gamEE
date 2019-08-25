@@ -10,15 +10,9 @@ from Application.Player import Player
 from Application.GameState import gameState
 from Application.MainMenu import MainMenu
 
-
-# load in an object(x location, y location).
-player = Player(30, 30)
-player2 = Player(100, 100)
-
-ObjectList = [player, player2]
-
 #Scene objects (not initialized)
 mainMenu = None
+level1 = None
 
 # set the center of the rectangular object.
 if __name__ == "__main__":
@@ -47,15 +41,12 @@ if __name__ == "__main__":
                 del mainMenu
                 mainMenu = None
 
-        #Check if we're in a state where a player has control
+        #Current state is the level one over world
         elif currentState == gameState.stateDict["Level 1 OverWorld"]:
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     gameState.isRunning = False
-
-                for obj in ObjectList:
-                    obj.EventHandler(event)
 
             # update the position of the object.
             for obj in ObjectList:

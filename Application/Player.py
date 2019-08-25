@@ -7,12 +7,14 @@ from Application.GameState import gameState
 
 class Player( GameObject ):
 
-    def __init__(self, position_x = 30, position_y = 30):
+    def __init__(self, position_x = 30, position_y = 30, velocity_x = 0, velocity_y = 0):
         #init GameObject
         GameObject.__init__(self)
 
         self.position.x = position_x
         self.position.y = position_y
+        self.velocity.x = velocity_x
+        self.velocity.y = velocity_y
 
     def EventHandler(self, event):
         if gameState.get() > 0:
