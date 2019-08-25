@@ -25,8 +25,11 @@ class GameObject():
         pygame.draw.rect(window.screen, colour.blue,
                          (self.position.x, self.position.y, 30, 30))
 
+    #Handler for specific event
     def EventHandler(self, event):
         pass
+
+    def multiFrameEventHandler(self):
 
 
 

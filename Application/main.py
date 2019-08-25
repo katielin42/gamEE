@@ -12,7 +12,7 @@ from Application.MainMenu import MainMenu
 
 #Scene objects (not initialized)
 mainMenu = None
-level1 = None
+levelOneOverworld = None
 
 # set the center of the rectangular object.
 if __name__ == "__main__":
@@ -47,10 +47,6 @@ if __name__ == "__main__":
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     gameState.isRunning = False
-
-            # update the position of the object.
-            for obj in ObjectList:
-                obj.updatePosition()
 
             # render
             # start out with a clear background.
