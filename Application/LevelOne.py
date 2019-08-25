@@ -3,6 +3,8 @@ import pygame
 from Application.GameState import gameState
 from Application.Player import Player
 from Application.Scene import Scene
+from Application.Window import window
+
 
 class LevelOneOverWorld( Scene ):
 
@@ -17,6 +19,10 @@ class LevelOneOverWorld( Scene ):
         self.objectList.append( player2 )
 
     def drawScene(self):
+        # render
+        # start out with a clear background.
+        window.clear()
+
         #render appended objects
         self.renderObjects()
 

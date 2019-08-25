@@ -9,6 +9,7 @@ from Application.Clock import clock
 from Application.Player import Player
 from Application.GameState import gameState
 from Application.MainMenu import MainMenu
+from Application.LevelOne import LevelOneOverWorld
 
 #Scene objects (not initialized)
 mainMenu = None
@@ -44,26 +45,21 @@ if __name__ == "__main__":
         #Current state is the level one over world
         elif currentState == gameState.stateDict["Level 1 OverWorld"]:
 
-            for event in pg.event.get():
-                if event.type == pg.QUIT:
-                    gameState.isRunning = False
+            #if the over world hasn't been initialized
+            if levelOneOverworld is None:
+                levelOneOverworld = LevelOneOverWorld()
 
-            # render
-            # start out with a clear background.
-            window.clear()
+            #Handle Events in the main menu
+            levelOneOverworld.handleEvents()
 
-            # render objects
-            for obj in ObjectList:
-                obj.drawObject()
-
-            # flip buffer
-            pg.display.flip()
-
-            # wait for tick
-            clock.waitForTick()
+            #display title screen menu
+            levelOneOverworld.drawScene()
 
         #flip display buffer
         pg.display.flip()
+
+        # wait for tick
+        clock.waitForTick()
 
 pg.quit()
 exit(0)

@@ -30,6 +30,7 @@ class GameObject():
         pass
 
     def multiFrameEventHandler(self):
+        pass
 
 
 
