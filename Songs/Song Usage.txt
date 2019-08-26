@@ -1,0 +1,5 @@
+Gentle Winds & Roaring Thunder = Main Menu
+
+Gentle Winds = Overworld
+
+Roaring Thunder = Underworld
