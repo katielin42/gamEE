@@ -10,17 +10,17 @@ class ImageObject( GameObject ):
     #Imagines stored as pygame strings
     imgDict = {
         "Press Space Start" : None,
-        "Press Backspace Exit": None
+#        "Press Backspace Exit": None
     }
 
     imgRef = {
         "Press Space Start": 0,
-        "Press Backspace Exit": 1
+#        "Press Backspace Exit": 1
     }
 
     imgLocDict = {
-        "Press Space Start": "../Resources/pressSpaceStart.png",
-        "Press Backspace Exit": "../Resources/pressBackspaceExit.png"
+        "Press Space Start": "../Resources/game_instructions.png",
+#        "Press Backspace Exit": "../Resources/pressBackspaceExit.png"
     }
 
     def __init__(self):
@@ -33,11 +33,11 @@ class ImageObject( GameObject ):
             #load in background image
             if ImageObject.imgDict["Press Space Start"] is None:
                 self.convertPIL2Pygame(ImageObject.imgLocDict["Press Space Start"], ImageObject.imgRef["Press Space Start"])
-            window.screen.blit(ImageObject.imgDict["Press Space Start"], (200, 0))
+            window.screen.blit(ImageObject.imgDict["Press Space Start"], (200, 200))
 
-            if ImageObject.imgDict["Press Backspace Exit"] is None:
-                self.convertPIL2Pygame(ImageObject.imgLocDict["Press Backspace Exit"], ImageObject.imgRef["Press Backspace Exit"])
-            window.screen.blit(ImageObject.imgDict["Press Backspace Exit"], (0, 0))
+            # if ImageObject.imgDict["Press Backspace Exit"] is None:
+            #     self.convertPIL2Pygame(ImageObject.imgLocDict["Press Backspace Exit"], ImageObject.imgRef["Press Backspace Exit"])
+            # window.screen.blit(ImageObject.imgDict["Press Backspace Exit"], (0, 0))
 
     def convertPIL2Pygame(self, location, context = 0):
         # load in background image
@@ -54,10 +54,10 @@ class ImageObject( GameObject ):
                 ImageObject.imgDict["Press Space Start"]= \
                     pg.transform.scale(ImageObject.imgDict["Press Space Start"], \
                     (200, 200))
-            if context == ImageObject.imgRef["Press Backspace Exit"]:
-                # based on current state store the pygame surface image
-                ImageObject.imgDict["Press Backspace Exit"] = pg.image.load(location)
-                # resize back to size of window
-                ImageObject.imgDict["Press Backspace Exit"] = \
-                    pg.transform.scale(ImageObject.imgDict["Press Backspace Exit"], \
-                                       (200, 200))
+            # if context == ImageObject.imgRef["Press Backspace Exit"]:
+            #     # based on current state store the pygame surface image
+            #     ImageObject.imgDict["Press Backspace Exit"] = pg.image.load(location)
+            #     # resize back to size of window
+            #     ImageObject.imgDict["Press Backspace Exit"] = \
+            #         pg.transform.scale(ImageObject.imgDict["Press Backspace Exit"], \
+            #                            (200, 200))

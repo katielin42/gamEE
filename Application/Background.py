@@ -18,7 +18,7 @@ class Background( GameObject ):
     }
 
     imgLocDict = {
-        "Main Menu": "../Resources/temp_backdrop0.jpg"
+        "Main Menu": "../Resources/upper_no_layout.png"
     }
 
     def __init__(self):
